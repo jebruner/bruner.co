@@ -56,57 +56,61 @@
       padding: 2.5rem 3rem 2rem;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.2rem;
       position: relative;
       z-index: 1;
     }
 
     header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .title-block {
       flex: 1;
+      max-width: 70%;
     }
 
     h1 {
-      font-size: 4rem;
-      letter-spacing: 0.05em;
+      font-size: 4.6rem;
+      letter-spacing: 0.04em;
       color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
+      white-space: nowrap; /* keep on one line */
     }
 
     .subtitle {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       color: var(--light-gray);
       letter-spacing: 0.045em;
+      white-space: nowrap; /* keep on one line */
     }
 
     .robotics-badge {
-      margin-top: 1rem;
+      margin-top: 1.1rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0.75rem 1.2rem;
+      gap: 1rem;
+      padding: 0.9rem 1.6rem;
       border-radius: 999px;
       background: rgba(0, 0, 0, 0.45);
       border: 1px solid rgba(230, 190, 138, 0.35);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(4px);
       animation: badgePulse 6s ease-in-out infinite;
+      white-space: nowrap; /* keep text in one line */
     }
 
     .robotics-badge img {
-      height: 3.75rem;
+      height: 4.6rem; /* larger */
       width: auto;
     }
 
     .robotics-badge span {
-      font-size: 1.2rem;
+      font-size: 1.35rem; /* larger */
       color: var(--gold);
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -115,7 +119,7 @@
 
     .logo {
       flex-shrink: 0;
-      height: 8.5rem;
+      height: 10.5rem; /* larger logo */
       aspect-ratio: 1 / 1;
       border-radius: 999px;
       background: rgba(0, 0, 0, 0.4);
@@ -123,10 +127,10 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 2px solid var(--green);
+      border: 3px solid var(--green);
       flex-direction: column;
       gap: 0;
-      padding: 1rem;
+      padding: 1.2rem;
     }
 
     .logo img {
@@ -140,23 +144,23 @@
       flex: 1;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2.2rem;
+      gap: 2.4rem;
     }
 
     .column {
       background: rgba(0, 0, 0, 0.45);
       border-radius: 1rem;
-      padding: 2rem 2.1rem;
+      padding: 2.1rem 2.2rem;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(230, 190, 138, 0.12);
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
-      gap: 1.15rem;
+      gap: 1.25rem;
     }
 
     .col-title {
-      font-size: 2.4rem;
+      font-size: 2.6rem; /* larger section titles */
       text-transform: uppercase;
       color: var(--green);
       margin-bottom: 0.15rem;
@@ -169,16 +173,16 @@
       border-radius: 999px;
       background: linear-gradient(to right, var(--green), var(--gold));
       background-size: 200% 100%;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.55rem;
       animation: underlineGlow 4s linear infinite;
     }
 
     .item {
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) 6.5rem;
-      gap: 0.6rem;
+      grid-template-columns: minmax(0, 2.1fr) 7.2rem;
+      gap: 0.65rem;
       align-items: baseline;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
     }
 
     @keyframes backgroundShift {
@@ -234,14 +238,14 @@
     }
 
     .item-name {
-      font-size: 1.7rem;
+      font-size: 1.9rem; /* larger item text */
       font-weight: 600;
       color: var(--white);
       overflow-wrap: anywhere;
     }
 
     .item-price {
-      font-size: 1.8rem;
+      font-size: 2rem; /* larger prices */
       font-weight: 700;
       color: var(--gold);
       text-align: right;
@@ -250,10 +254,10 @@
 
     .item-details {
       grid-column: 1 / -1;
-      font-size: 1.1rem;
+      font-size: 1.2rem; /* bump details slightly */
       color: var(--light-gray);
-      opacity: 0.92;
-      line-height: 1.4;
+      opacity: 0.95;
+      line-height: 1.5;
     }
 
     .item-details span {
@@ -264,7 +268,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--light-gray);
       margin-top: 0.5rem;
       gap: 1rem;
@@ -286,29 +290,34 @@
         padding: 1.8rem 1.8rem 1.6rem;
       }
       h1 {
-        font-size: 3.4rem;
+        font-size: 3.6rem;
+        white-space: normal; /* allow wrap on smaller screens */
+      }
+      .subtitle {
+        font-size: 1.35rem;
+        white-space: normal;
       }
       .menu-grid {
         gap: 1.6rem;
       }
       .col-title {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
       .item-name {
-        font-size: 1.45rem;
+        font-size: 1.6rem;
       }
       .item-price {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
       .item-details {
-        font-size: 1rem;
+        font-size: 1.05rem;
       }
       .logo {
-        height: 7rem;
-        padding: 0.8rem;
+        height: 8.5rem;
+        padding: 0.9rem;
       }
       .robotics-badge img {
-        height: 3.1rem;
+        height: 3.6rem;
       }
     }
 
@@ -342,11 +351,11 @@
       }
 
       .item-name {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
       }
 
       .item-price {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
 
       .item-details {
@@ -354,12 +363,12 @@
       }
 
       .logo {
-        height: 5.5rem;
-        padding: 0.6rem;
+        height: 6rem;
+        padding: 0.7rem;
       }
 
       .robotics-badge img {
-        height: 2.4rem;
+        height: 2.6rem;
       }
     }
 
