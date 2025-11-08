@@ -54,10 +54,10 @@
     .screen {
       width: 100%;
       max-width: 1920px;
-      padding: 2rem 3rem 1.7rem; /* slightly tighter vertically */
+      padding: 3.5rem 4rem 3.5rem; /* added safe margins for overscan */
       display: flex;
       flex-direction: column;
-      gap: 2.1rem;
+      gap: 1.7rem;
       position: relative;
       z-index: 1;
     }
@@ -66,7 +66,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 2.2rem;
+      gap: 1.8rem;
     }
 
     .title-block {
@@ -75,27 +75,27 @@
     }
 
     h1 {
-      font-size: 5rem;
+      font-size: 4.7rem;            /* slightly reduced to save height */
       letter-spacing: 0.04em;
       color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
       white-space: nowrap;          /* keep on one line on TV */
     }
 
     .subtitle {
-      font-size: 1.9rem;
+      font-size: 1.7rem;
       color: var(--light-gray);
       letter-spacing: 0.045em;
       white-space: nowrap;          /* keep on one line on TV */
     }
 
     .robotics-badge {
-      margin-top: 1.15rem;
+      margin-top: 0.9rem;
       display: inline-flex;
       align-items: center;
-      gap: 1.1rem;
-      padding: 1rem 1.8rem;         /* bigger badge */
+      gap: 1rem;
+      padding: 0.8rem 1.6rem;
       border-radius: 999px;
       background: rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(230, 190, 138, 0.4);
@@ -106,12 +106,12 @@
     }
 
     .robotics-badge img {
-      height: 5rem;                 /* larger logo */
+      height: 4.4rem;               /* slightly smaller to save height */
       width: auto;
     }
 
     .robotics-badge span {
-      font-size: 1.5rem;            /* larger text */
+      font-size: 1.4rem;
       color: var(--gold);
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -120,7 +120,7 @@
 
     .logo {
       flex-shrink: 0;
-      height: 11.5rem;              /* larger Bulldogs logo */
+      height: 10.8rem;
       aspect-ratio: 1 / 1;
       border-radius: 999px;
       background: rgba(0, 0, 0, 0.45);
@@ -130,7 +130,7 @@
       overflow: hidden;
       border: 3px solid var(--green);
       flex-direction: column;
-      padding: 1.2rem;
+      padding: 1.1rem;
     }
 
     .logo img {
@@ -144,26 +144,26 @@
       flex: 1;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2.5rem;
+      gap: 2.1rem;                  /* slightly tighter */
     }
 
     .column {
-      background: rgba(0, 0, 0, 0.6);  /* slightly darker for contrast */
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 1rem;
-      padding: 2rem 2.2rem;
+      padding: 1.7rem 2.1rem;       /* less padding top/bottom */
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(230, 190, 138, 0.15);
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
-      gap: 1.3rem;
+      gap: 1.1rem;
     }
 
     .col-title {
-      font-size: 3rem;               /* larger section titles */
+      font-size: 3.2rem;            /* larger section titles */
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
       letter-spacing: 0.08em;
     }
 
@@ -173,7 +173,7 @@
       border-radius: 999px;
       background: linear-gradient(to right, var(--green), var(--gold));
       background-size: 200% 100%;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       animation: underlineGlow 4s linear infinite;
     }
 
@@ -182,7 +182,7 @@
       grid-template-columns: minmax(0, 2.1fr) 7.5rem;
       gap: 0.7rem;
       align-items: baseline;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
     }
 
     @keyframes backgroundShift {
@@ -238,14 +238,14 @@
     }
 
     .item-name {
-      font-size: 2.2rem;             /* bigger item text */
+      font-size: 2.4rem;            /* bigger item text */
       font-weight: 600;
       color: var(--white);
       overflow-wrap: anywhere;
     }
 
     .item-price {
-      font-size: 2.4rem;             /* bigger prices */
+      font-size: 2.8rem;            /* bigger prices */
       font-weight: 700;
       color: var(--gold);
       text-align: right;
@@ -254,10 +254,10 @@
 
     .item-details {
       grid-column: 1 / -1;
-      font-size: 1.2rem;
+      font-size: 1.05rem;           /* slightly smaller so they don't dominate */
       color: var(--light-gray);
-      opacity: 0.95;
-      line-height: 1.5;
+      opacity: 0.9;
+      line-height: 1.4;
     }
 
     .item-details span {
@@ -270,7 +270,7 @@
       align-items: center;
       font-size: 1.3rem;
       color: var(--light-gray);
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -287,7 +287,7 @@
     /* Responsive tweaks */
     @media (max-width: 1200px) {
       .screen {
-        padding: 1.8rem 1.8rem 1.5rem;
+        padding: 1.5rem 1.8rem 1.2rem;
       }
       h1 {
         font-size: 3.8rem;
@@ -301,13 +301,13 @@
         gap: 1.6rem;
       }
       .col-title {
-        font-size: 2.3rem;
+        font-size: 2.4rem;
       }
       .item-name {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
       }
       .item-price {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
       .item-details {
         font-size: 1.05rem;
@@ -317,7 +317,7 @@
         padding: 0.9rem;
       }
       .robotics-badge img {
-        height: 3.8rem;
+        height: 3.6rem;
       }
     }
 
