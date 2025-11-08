@@ -16,7 +16,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@users.noreply.github.com"
 
-      - name: Push to Gandi live repo
+      - name: Push to Gandi and deploy
         env:
           GANDI_GIT_USERNAME: ${{ secrets.GANDI_GIT_USERNAME }}
           GANDI_GIT_PASSWORD: ${{ secrets.GANDI_GIT_PASSWORD }}
@@ -25,5 +25,19 @@ jobs:
             echo "GANDI_GIT_USERNAME and GANDI_GIT_PASSWORD secrets must be set." >&2
             exit 1
           fi
-          git remote add gandi https://$GANDI_GIT_USERNAME:$GANDI_GIT_PASSWORD@git.sd6.gpaas.net/bruner.co.git
+
+          # Install sshpass so we can use password-based SSH non-interactively
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+          # Use sshpass for ALL git ssh operations in this step
+          export GIT_SSH_COMMAND="sshpass -p '$GANDI_GIT_PASSWORD' ssh -o StrictHostKeyChecking=no"
+
+          # Add the same remote you use locally (git+ssh)
+          git remote add gandi git+ssh://$GANDI_GIT_USERNAME@git.sd6.gpaas.net/bruner.co.git
+
+          # Push current commit to Gandi's master
           git push gandi HEAD:master
+
+          # Trigger the deploy on Gandi (same as you do manually)
+          sshpass -p "$GANDI_GIT_PASSWORD" ssh -o StrictHostKeyChecking=no "$GANDI_GIT_USERNAME@git.sd6.gpaas.net" "deploy bruner.co.git"
