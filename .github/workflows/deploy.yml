@@ -1,0 +1,29 @@
+name: Deploy to Gandi
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure git user
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Push to Gandi live repo
+        env:
+          GANDI_GIT_USERNAME: ${{ secrets.GANDI_GIT_USERNAME }}
+          GANDI_GIT_PASSWORD: ${{ secrets.GANDI_GIT_PASSWORD }}
+        run: |
+          if [ -z "$GANDI_GIT_USERNAME" ] || [ -z "$GANDI_GIT_PASSWORD" ]; then
+            echo "GANDI_GIT_USERNAME and GANDI_GIT_PASSWORD secrets must be set." >&2
+            exit 1
+          fi
+          git remote add gandi https://$GANDI_GIT_USERNAME:$GANDI_GIT_PASSWORD@git.sd6.gpaas.net/bruner.co.git
+          git push gandi HEAD:master
