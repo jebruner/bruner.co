@@ -1,135 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DMS Concessions | bruner.co</title>
+  <meta charset="UTF-8" />
+  <title>DMS Concessions Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      color-scheme: light;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --blue: #0f62fe;
-      --slate: #111827;
-      --muted: #6b7280;
-      --bg: #f8fafc;
-      --card: #ffffff;
+      --green: #007336;
+      --gold: #E6BE8A;
+      --white: #ffffff;
+      --light-gray: #dddddd;
+      --bg-top: #000000;
+      --bg-bottom: #001a10;
     }
+
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
       padding: 0;
-      background: var(--bg);
-      color: var(--slate);
     }
-    header {
-      background: var(--card);
-      border-bottom: 1px solid #e5e7eb;
-      padding: 2rem 6vw;
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: var(--white);
+      background: radial-gradient(circle at top left, #002819 0, #000 45%),
+        linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      position: relative;
+      overflow: hidden;
     }
-    header h1 {
-      margin: 0 0 0.5rem;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: conic-gradient(
+          from 120deg,
+          rgba(0, 115, 54, 0.05),
+          rgba(230, 190, 138, 0.1),
+          rgba(0, 0, 0, 0)
+        );
+      filter: blur(60px);
+      animation: backgroundShift 24s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
     }
-    header p {
-      margin: 0;
-      max-width: 640px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    main {
-      padding: 3rem 6vw 4rem;
-      display: grid;
+
+    .screen {
+      width: 100%;
+      max-width: 1920px;
+      padding: 2.5rem 3rem 2rem;
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
+      position: relative;
+      z-index: 1;
     }
-    section {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e5e7eb;
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
     }
-    section h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
+
+    .title-block {
+      flex: 1;
     }
-    ul {
-      padding-left: 1.2rem;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-    .badge {
-      display: inline-block;
-      padding: 0.3rem 0.75rem;
-      margin-right: 0.5rem;
-      border-radius: 999px;
-      background: rgba(15, 98, 254, 0.08);
-      color: var(--blue);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
+
+    h1 {
+      font-size: 4rem;
       letter-spacing: 0.05em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
     }
-    .cta {
-      margin-top: 1.5rem;
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--light-gray);
+      letter-spacing: 0.045em;
+    }
+
+    .robotics-badge {
+      margin-top: 1rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 1.25rem;
+      gap: 0.8rem;
+      padding: 0.75rem 1.2rem;
       border-radius: 999px;
-      background: var(--blue);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 15px 30px rgba(15, 98, 254, 0.4);
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(230, 190, 138, 0.35);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      animation: badgePulse 6s ease-in-out infinite;
     }
+
+    .robotics-badge img {
+      height: 3.75rem;
+      width: auto;
+    }
+
+    .robotics-badge span {
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .logo {
+      flex-shrink: 0;
+      height: 8.5rem;
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid var(--green);
+      flex-direction: column;
+      gap: 0;
+      padding: 1rem;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: crestFloat 18s ease-in-out infinite;
+    }
+
+    .menu-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.2rem;
+    }
+
+    .column {
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 1rem;
+      padding: 2rem 2.1rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(230, 190, 138, 0.12);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .col-title {
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.15rem;
+      letter-spacing: 0.08em;
+    }
+
+    .col-underline {
+      width: 4.25rem;
+      height: 0.22rem;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--green), var(--gold));
+      background-size: 200% 100%;
+      margin-bottom: 0.45rem;
+      animation: underlineGlow 4s linear infinite;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) 6.5rem;
+      gap: 0.6rem;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    @keyframes backgroundShift {
+      0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.65;
+      }
+      50% {
+        transform: rotate(30deg) scale(1.05);
+        opacity: 0.8;
+      }
+      100% {
+        transform: rotate(-25deg) scale(1.1);
+        opacity: 0.55;
+      }
+    }
+
+    @keyframes badgePulse {
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      }
+      50% {
+        transform: translateY(-4px) scale(1.04);
+        box-shadow: 0 18px 38px rgba(230, 190, 138, 0.25);
+      }
+    }
+
+    @keyframes crestFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes underlineGlow {
+      0% {
+        background-position: 0% 50%;
+        box-shadow: 0 0 10px rgba(230, 190, 138, 0.2);
+      }
+      50% {
+        background-position: 100% 50%;
+        box-shadow: 0 0 16px rgba(230, 190, 138, 0.35);
+      }
+      100% {
+        background-position: 0% 50%;
+        box-shadow: 0 0 10px rgba(230, 190, 138, 0.2);
+      }
+    }
+
+    .item-name {
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--white);
+      overflow-wrap: anywhere;
+    }
+
+    .item-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .item-details {
+      grid-column: 1 / -1;
+      font-size: 1.1rem;
+      color: var(--light-gray);
+      opacity: 0.92;
+      line-height: 1.4;
+    }
+
+    .item-details span {
+      white-space: nowrap;
+    }
+
     footer {
-      text-align: center;
-      padding: 2rem 6vw 3rem;
-      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      color: var(--light-gray);
+      margin-top: 0.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      opacity: 0.9;
+    }
+
+    .footer-right {
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 1200px) {
+      .screen {
+        padding: 1.8rem 1.8rem 1.6rem;
+      }
+      h1 {
+        font-size: 3.4rem;
+      }
+      .menu-grid {
+        gap: 1.6rem;
+      }
+      .col-title {
+        font-size: 2rem;
+      }
+      .item-name {
+        font-size: 1.45rem;
+      }
+      .item-price {
+        font-size: 1.5rem;
+      }
+      .item-details {
+        font-size: 1rem;
+      }
+      .logo {
+        height: 7rem;
+        padding: 0.8rem;
+      }
+      .robotics-badge img {
+        height: 3.1rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .screen {
+        padding: 1.2rem;
+      }
+
+      header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .subtitle {
+        font-size: 1.05rem;
+      }
+
+      .item-name {
+        font-size: 1.15rem;
+      }
+
+      .item-price {
+        font-size: 1.2rem;
+      }
+
+      .item-details {
+        font-size: 0.95rem;
+      }
+
+      .logo {
+        height: 5.5rem;
+        padding: 0.6rem;
+      }
+
+      .robotics-badge img {
+        height: 2.4rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      .robotics-badge,
+      .logo img,
+      .col-underline {
+        animation: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <span class="badge">DMS</span>
-    <h1>Concessions Program</h1>
-    <p>The DMS Concessions program centralizes discounted vendor agreements, procurement guidelines,
-      and onboarding materials for the bruner.co team and partners.</p>
-  </header>
-  <main>
-    <section>
-      <h2>Current Concessions</h2>
-      <ul>
-        <li>Preferred venue partners with tiered revenue share (up to 18%).</li>
-        <li>Exclusive payment processing rates through Stripe Connect (75 bps below card rates).</li>
-        <li>Equipment bundle pricing with 36-month refresh commitments.</li>
-        <li>Staffing agency retainers with performance-based rebates.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Playbook &amp; Access</h2>
-      <ul>
-        <li>Download SOP packet and negotiation guardrails (updated quarterly).</li>
-        <li>Submit new concession requests via the internal service desk.</li>
-        <li>Schedule enablement sessions with the DMS team each Wednesday.</li>
-        <li>Track KPI impact in the shared Looker Studio dashboard.</li>
-      </ul>
-      <a class="cta" href="mailto:dms@bruner.co">Email DMS Concessions</a>
-    </section>
-    <section>
-      <h2>Implementation Timeline</h2>
-      <ul>
-        <li>Week 0: Intake &amp; requirements gathering.</li>
-        <li>Week 2: Vendor shortlist + financial modeling.</li>
-        <li>Week 4: Contract review and legal sign-off.</li>
-        <li>Week 6: Launch &amp; post-launch optimization.</li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    &copy; <script>document.write(new Date().getFullYear());</script> bruner.co · DMS Concessions
-  </footer>
+  <div class="screen">
+    <header>
+      <div class="title-block">
+        <h1>DMS Concessions</h1>
+        <div class="subtitle">Student engineers fueling the Green &amp; Gold</div>
+        <div class="robotics-badge">
+          <img src="robotics_logo.png" alt="DMS Robotics Club logo" />
+          <span>Powered by DMS Robotics</span>
+        </div>
+      </div>
+
+      <!-- Bulldog logo -->
+      <div class="logo">
+        <img src="dms_logo01.png" alt="Derby Middle School Bulldogs logo" />
+      </div>
+    </header>
+
+    <main class="menu-grid">
+      <!-- Beverages -->
+      <section class="column">
+        <div class="col-title">Beverages</div>
+        <div class="col-underline"></div>
+
+        <div class="item">
+          <div class="item-name">Pop</div>
+          <div class="item-price">$3</div>
+          <div class="item-details">
+            Coke • Diet Coke • Dr Pepper • Diet Dr Pepper • Sprite • Mt. Dew
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Sports Drinks</div>
+          <div class="item-price">$3</div>
+          <div class="item-details">Gatorade • Powerade</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Water</div>
+          <div class="item-price">$1</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Coffee</div>
+          <div class="item-price">$2</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Pickle Juice Shot</div>
+          <div class="item-price">50¢</div>
+        </div>
+      </section>
+
+      <!-- Food -->
+      <section class="column">
+        <div class="col-title">Food</div>
+        <div class="col-underline"></div>
+
+        <div class="item">
+          <div class="item-name">Nachos</div>
+          <div class="item-price">$4</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Pretzel</div>
+          <div class="item-price">$3</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Hot Dog</div>
+          <div class="item-price">$2</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Meal Deal</div>
+          <div class="item-price">$5</div>
+          <div class="item-details">Hot Dog + Chips + Drink</div>
+        </div>
+      </section>
+
+      <!-- Candy & Snacks -->
+      <section class="column">
+        <div class="col-title">Candy &amp; Snacks</div>
+        <div class="col-underline"></div>
+
+        <div class="item">
+          <div class="item-name">Candy</div>
+          <div class="item-price">$2</div>
+          <div class="item-details">
+            M&amp;M’s (plain/peanut) • Reese’s PB Cups • Snickers • KitKat • Twix
+            • Skittles • Starburst • Hershey’s • Nerds Gummy Clusters • Airhead
+            Extremes
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Cotton Candy</div>
+          <div class="item-price">$2</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Granola Bar</div>
+          <div class="item-price">$2</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Chips</div>
+          <div class="item-price">$1</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Pickle</div>
+          <div class="item-price">$1</div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">Suckers</div>
+          <div class="item-price">75¢ or 2/$1</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-left">Card &amp; cash accepted</div>
+      <div class="footer-right">All proceeds support the DMS Robotics Club</div>
+    </footer>
+  </div>
 </body>
 </html>
