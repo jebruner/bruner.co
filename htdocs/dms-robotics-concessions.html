@@ -54,10 +54,10 @@
     .screen {
       width: 100%;
       max-width: 1920px;
-      padding: 2.5rem 3rem 2rem;
+      padding: 2rem 3rem 1.7rem; /* slightly tighter vertically */
       display: flex;
       flex-direction: column;
-      gap: 2.2rem;
+      gap: 2.1rem;
       position: relative;
       z-index: 1;
     }
@@ -66,7 +66,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 2.2rem;
     }
 
     .title-block {
@@ -75,43 +75,43 @@
     }
 
     h1 {
-      font-size: 4.6rem;
+      font-size: 5rem;
       letter-spacing: 0.04em;
       color: var(--gold);
       text-transform: uppercase;
       margin-bottom: 0.35rem;
-      white-space: nowrap; /* keep on one line */
+      white-space: nowrap;          /* keep on one line on TV */
     }
 
     .subtitle {
-      font-size: 1.7rem;
+      font-size: 1.9rem;
       color: var(--light-gray);
       letter-spacing: 0.045em;
-      white-space: nowrap; /* keep on one line */
+      white-space: nowrap;          /* keep on one line on TV */
     }
 
     .robotics-badge {
-      margin-top: 1.1rem;
+      margin-top: 1.15rem;
       display: inline-flex;
       align-items: center;
-      gap: 1rem;
-      padding: 0.9rem 1.6rem;
+      gap: 1.1rem;
+      padding: 1rem 1.8rem;         /* bigger badge */
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(230, 190, 138, 0.35);
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(230, 190, 138, 0.4);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(4px);
       animation: badgePulse 6s ease-in-out infinite;
-      white-space: nowrap; /* keep text in one line */
+      white-space: nowrap;          /* keep text in one line */
     }
 
     .robotics-badge img {
-      height: 4.6rem; /* larger */
+      height: 5rem;                 /* larger logo */
       width: auto;
     }
 
     .robotics-badge span {
-      font-size: 1.35rem; /* larger */
+      font-size: 1.5rem;            /* larger text */
       color: var(--gold);
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -120,17 +120,16 @@
 
     .logo {
       flex-shrink: 0;
-      height: 10.5rem; /* larger logo */
+      height: 11.5rem;              /* larger Bulldogs logo */
       aspect-ratio: 1 / 1;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       border: 3px solid var(--green);
       flex-direction: column;
-      gap: 0;
       padding: 1.2rem;
     }
 
@@ -145,23 +144,23 @@
       flex: 1;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2.4rem;
+      gap: 2.5rem;
     }
 
     .column {
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.6);  /* slightly darker for contrast */
       border-radius: 1rem;
-      padding: 2.1rem 2.2rem;
+      padding: 2rem 2.2rem;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(230, 190, 138, 0.12);
+      border: 1px solid rgba(230, 190, 138, 0.15);
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1.3rem;
     }
 
     .col-title {
-      font-size: 2.6rem; /* larger section titles */
+      font-size: 3rem;               /* larger section titles */
       text-transform: uppercase;
       color: var(--green);
       margin-bottom: 0.15rem;
@@ -169,21 +168,21 @@
     }
 
     .col-underline {
-      width: 4.25rem;
-      height: 0.22rem;
+      width: 4.5rem;
+      height: 0.24rem;
       border-radius: 999px;
       background: linear-gradient(to right, var(--green), var(--gold));
       background-size: 200% 100%;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.6rem;
       animation: underlineGlow 4s linear infinite;
     }
 
     .item {
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) 7.2rem;
-      gap: 0.65rem;
+      grid-template-columns: minmax(0, 2.1fr) 7.5rem;
+      gap: 0.7rem;
       align-items: baseline;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.9rem;
     }
 
     @keyframes backgroundShift {
@@ -239,14 +238,14 @@
     }
 
     .item-name {
-      font-size: 1.9rem; /* larger item text */
+      font-size: 2.2rem;             /* bigger item text */
       font-weight: 600;
       color: var(--white);
       overflow-wrap: anywhere;
     }
 
     .item-price {
-      font-size: 2rem; /* larger prices */
+      font-size: 2.4rem;             /* bigger prices */
       font-weight: 700;
       color: var(--gold);
       text-align: right;
@@ -255,7 +254,7 @@
 
     .item-details {
       grid-column: 1 / -1;
-      font-size: 1.2rem; /* bump details slightly */
+      font-size: 1.2rem;
       color: var(--light-gray);
       opacity: 0.95;
       line-height: 1.5;
@@ -269,9 +268,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--light-gray);
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -288,37 +287,37 @@
     /* Responsive tweaks */
     @media (max-width: 1200px) {
       .screen {
-        padding: 1.8rem 1.8rem 1.6rem;
+        padding: 1.8rem 1.8rem 1.5rem;
       }
       h1 {
-        font-size: 3.6rem;
-        white-space: normal; /* allow wrap on smaller screens */
+        font-size: 3.8rem;
+        white-space: normal;
       }
       .subtitle {
-        font-size: 1.35rem;
+        font-size: 1.5rem;
         white-space: normal;
       }
       .menu-grid {
         gap: 1.6rem;
       }
       .col-title {
-        font-size: 2.1rem;
+        font-size: 2.3rem;
       }
       .item-name {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
       .item-price {
-        font-size: 1.7rem;
+        font-size: 2rem;
       }
       .item-details {
         font-size: 1.05rem;
       }
       .logo {
-        height: 8.5rem;
+        height: 9rem;
         padding: 0.9rem;
       }
       .robotics-badge img {
-        height: 3.6rem;
+        height: 3.8rem;
       }
     }
 
@@ -344,19 +343,19 @@
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 2.4rem;
+        font-size: 2.6rem;
       }
 
       .subtitle {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
       }
 
       .item-name {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
 
       .item-price {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
       }
 
       .item-details {
@@ -364,12 +363,12 @@
       }
 
       .logo {
-        height: 6rem;
+        height: 6.3rem;
         padding: 0.7rem;
       }
 
       .robotics-badge img {
-        height: 2.6rem;
+        height: 2.7rem;
       }
     }
 
