@@ -37,8 +37,11 @@ jobs:
           # Add the same remote you use locally (git+ssh)
           git remote add gandi git+ssh://$GANDI_GIT_USERNAME@git.sd6.gpaas.net/bruner.co.git
 
-          # Push current commit to Gandi's master
-          git push gandi HEAD:master
+          # Make sure we know the current state of Gandi's master before pushing
+          git fetch gandi master || true
+
+          # Force push (with lease) so deploys do not fail when Gandi has extra commits
+          git push --force-with-lease gandi HEAD:master
 
           # Trigger the deploy on Gandi (same as you do manually)
           sshpass -p "$GANDI_GIT_PASSWORD" ssh -o StrictHostKeyChecking=no "$GANDI_GIT_USERNAME@git.sd6.gpaas.net" "deploy bruner.co.git"
