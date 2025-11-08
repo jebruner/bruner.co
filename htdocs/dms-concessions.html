@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DMS Concessions | bruner.co</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --blue: #0f62fe;
+      --slate: #111827;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--slate);
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 2rem 6vw;
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    header p {
+      margin: 0;
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    main {
+      padding: 3rem 6vw 4rem;
+      display: grid;
+      gap: 2rem;
+    }
+    section {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+    section h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      margin-right: 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 98, 254, 0.08);
+      color: var(--blue);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cta {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 15px 30px rgba(15, 98, 254, 0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 6vw 3rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="badge">DMS</span>
+    <h1>Concessions Program</h1>
+    <p>The DMS Concessions program centralizes discounted vendor agreements, procurement guidelines,
+      and onboarding materials for the bruner.co team and partners.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Current Concessions</h2>
+      <ul>
+        <li>Preferred venue partners with tiered revenue share (up to 18%).</li>
+        <li>Exclusive payment processing rates through Stripe Connect (75 bps below card rates).</li>
+        <li>Equipment bundle pricing with 36-month refresh commitments.</li>
+        <li>Staffing agency retainers with performance-based rebates.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Playbook &amp; Access</h2>
+      <ul>
+        <li>Download SOP packet and negotiation guardrails (updated quarterly).</li>
+        <li>Submit new concession requests via the internal service desk.</li>
+        <li>Schedule enablement sessions with the DMS team each Wednesday.</li>
+        <li>Track KPI impact in the shared Looker Studio dashboard.</li>
+      </ul>
+      <a class="cta" href="mailto:dms@bruner.co">Email DMS Concessions</a>
+    </section>
+    <section>
+      <h2>Implementation Timeline</h2>
+      <ul>
+        <li>Week 0: Intake &amp; requirements gathering.</li>
+        <li>Week 2: Vendor shortlist + financial modeling.</li>
+        <li>Week 4: Contract review and legal sign-off.</li>
+        <li>Week 6: Launch &amp; post-launch optimization.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear());</script> bruner.co · DMS Concessions
+  </footer>
+</body>
+</html>
